@@ -11,7 +11,7 @@ public class PropsLoader {
 
     public Properties loadProperties(){
         Properties props = new Properties();
-        String path = Path.PROPERTIES_PATH.getProperty();
+        String path = PathConfig.PROPERTIES_PATH.getPath();
 
         log.info("Try to load properties from: {}", path);
 
