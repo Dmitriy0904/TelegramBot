@@ -1,5 +1,5 @@
 public enum Path {
-    PROPERTIES_PATH("bot.properties");
+    PROPERTIES_PATH("src/main/resources/bot.properties");
 
     private final String property;
 
