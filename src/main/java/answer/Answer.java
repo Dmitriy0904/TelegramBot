@@ -16,6 +16,9 @@ public class Answer {
     public String formAnswer(Message message){
         CommandsType answerType = messageParser.parseMessage(message);
         switch (answerType){
+            case START -> {
+                return "Hello from bot. The bot is already running";
+            }
             case FIND -> {
                 return "Finding city";
             }

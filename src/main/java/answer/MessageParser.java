@@ -19,6 +19,8 @@ public class MessageParser {
         }
         else if(text.toLowerCase().equals(CommandsType.SETTINGS.getCommand())){
             return CommandsType.SETTINGS;
+        } else if(text.toLowerCase().equals(CommandsType.START.getCommand())){
+            return CommandsType.START;
         }
         return CommandsType.DEFAULT;
     }
