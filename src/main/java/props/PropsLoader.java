@@ -12,15 +12,14 @@ import java.util.Properties;
 
 public class PropsLoader {
     private static final Logger log = LoggerFactory.getLogger(PropsLoader.class);
-
     public Properties loadProperties(){
         Properties props = new Properties();
-        String PATH = PathConfig.PROPERTIES_PATH.getPath();
+        String PATH = PathConfig.BOT_PROPERTIES_PATH.getPath();
 
         log.info("Try to load properties from: {}", PATH);
 
-        try(InputStream inputStream = PropsLoader.class.getResourceAsStream(PATH)){
-            props.load(inputStream);
+        try(FileInputStream fileInputStream = new FileInputStream(PATH)){
+            props.load(fileInputStream);
 
         } catch (FileNotFoundException exception) {
             log.error("FileNotFoundException in read properties method from file: {}", PATH);
