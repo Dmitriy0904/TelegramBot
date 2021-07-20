@@ -1,6 +1,7 @@
 package commands.start;
 
 import commands.Active;
+import commands.CommandsPackages;
 import org.reflections.Reflections;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Set;
@@ -11,13 +12,15 @@ public class StartCommandFactory {
     private static StartCommandFactory instance;
     private final Reflections reflections;
     private final Set<Class<? extends StartCommand>> implementations;
-    private final String ROOT_PACKAGE = "commands.start";
+    private final String ROOT_PACKAGE;
 
 
     private StartCommandFactory(){
+        ROOT_PACKAGE = CommandsPackages.START.getROOT_PACKAGE();
         reflections = new Reflections(ROOT_PACKAGE);
         implementations = reflections.getSubTypesOf(StartCommand.class);
     }
+
 
     public static synchronized StartCommandFactory getInstance(){
         if(instance == null){
@@ -25,6 +28,7 @@ public class StartCommandFactory {
         }
         return instance;
     }
+
 
     public StartCommand getStartCommand(){
         Set<Class<? extends StartCommand>> candidates = implementations
@@ -52,16 +56,6 @@ public class StartCommandFactory {
             }
         }
 
-        throw new RuntimeException("Cannot created new instance");
+        throw new RuntimeException("Cannot created new instance of start command");
     }
 }
-
-
-
-
-
-
-
-
-
-
