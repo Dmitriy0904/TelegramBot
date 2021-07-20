@@ -3,6 +3,7 @@ package answer;
 import commands.CommandsType;
 import org.telegram.telegrambots.api.objects.Message;
 
+
 public class MessageParser {
 
     public CommandsType parseMessage(Message message){
@@ -11,7 +12,7 @@ public class MessageParser {
         }
         //switch??
         String text = message.getText();
-        if(text.toLowerCase().equals(CommandsType.FIND.getCommand())){
+        if(text.toLowerCase().contains(CommandsType.FIND.getCommand())){
             return CommandsType.FIND;
         }
         else if(text.toLowerCase().equals(CommandsType.HELP.getCommand())){
@@ -23,5 +24,6 @@ public class MessageParser {
             return CommandsType.START;
         }
         return CommandsType.DEFAULT;
+
     }
 }

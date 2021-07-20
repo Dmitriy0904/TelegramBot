@@ -1,6 +1,6 @@
 package answer;
 
-import commands.CommandsType;
+import commands.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.api.objects.Message;
@@ -17,19 +17,24 @@ public class Answer {
         CommandsType answerType = messageParser.parseMessage(message);
         switch (answerType){
             case START -> {
-                return "Hello from bot. The bot is already running";
+                StartCommand startCommand = StartCommand.getInstance();
+                return startCommand.formStartAnswer();
             }
             case FIND -> {
-                return "Finding city";
+                FindCommand findCommand = FindCommand.getInstance();
+                return findCommand.formFindAnswer(message);
             }
             case HELP -> {
-                return "This is info";
+                HelpCommand helpCommand = HelpCommand.getInstance();
+                return helpCommand.formHelpAnswer(message);
             }
             case SETTINGS -> {
-                return "Something settings";
+                SettingsCommand settingsCommand = SettingsCommand.getInstance();
+                return settingsCommand.formSettingsAnswer(message);
             }
             default -> {
-                return "Incorrect command";
+                DefaultCommand defaultCommand = DefaultCommand.getInstance();
+                return defaultCommand.formDefaultAnswer(message);
             }
         }
     }
