@@ -3,27 +3,30 @@ package answer;
 import commands.CommandsType;
 import org.telegram.telegrambots.api.objects.Message;
 
-
 public class MessageParser {
+    private final Integer MAX_MESSAGE_PARTS = 2;
 
-    public CommandsType parseMessage(Message message){
+    public UserQuery parseMessage(Message message){
+
         if(message == null || !message.hasText()){
-            return CommandsType.DEFAULT;
+            new UserQuery(CommandsType.DEFAULT, null);
         }
         //switch??
         String text = message.getText();
         if(text.toLowerCase().contains(CommandsType.FIND.getCommand())){
-            return CommandsType.FIND;
+            String[] info = text.split(" ", MAX_MESSAGE_PARTS);
+            String city = info[1].strip();
+            return new UserQuery(CommandsType.FIND, city);
         }
-        else if(text.toLowerCase().equals(CommandsType.HELP.getCommand())){
-            return CommandsType.HELP;
+        else if(text.equalsIgnoreCase(CommandsType.HELP.getCommand())){
+            return new UserQuery(CommandsType.HELP, null);
         }
-        else if(text.toLowerCase().equals(CommandsType.SETTINGS.getCommand())){
-            return CommandsType.SETTINGS;
-        } else if(text.toLowerCase().equals(CommandsType.START.getCommand())){
-            return CommandsType.START;
+        else if(text.equalsIgnoreCase(CommandsType.SETTINGS.getCommand())){
+            return new UserQuery(CommandsType.SETTINGS, null);
         }
-        return CommandsType.DEFAULT;
-
+        else if(text.equalsIgnoreCase(CommandsType.START.getCommand())){
+            return new UserQuery(CommandsType.START, null);
+        }
+        return new UserQuery(CommandsType.DEFAULT, null);
     }
 }
