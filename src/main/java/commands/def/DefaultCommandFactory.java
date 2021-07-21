@@ -33,7 +33,7 @@ public class DefaultCommandFactory {
     public DefaultCommand getDefaultCommand(){
         Set<Class<? extends DefaultCommand>> candidates = implementations
                 .stream()
-                .filter(startImpl -> startImpl.isAnnotationPresent(Active.class))
+                .filter(defImpl -> defImpl.isAnnotationPresent(Active.class))
                 .collect(Collectors.toSet());
 
         if(candidates.isEmpty()){
@@ -56,6 +56,6 @@ public class DefaultCommandFactory {
             }
         }
 
-        throw new RuntimeException("Cannot created new instance of default command");
+        throw new RuntimeException("Cannot created new default command instance");
     }
 }

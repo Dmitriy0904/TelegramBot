@@ -60,12 +60,6 @@ public class SettingsCommandFactory {
             }
         }
 
-        throw new RuntimeException("Cannot create new instance of settings command");
+        throw new RuntimeException("Cannot create new settings command instance");
     }
 }
-
-
-
-
-
-

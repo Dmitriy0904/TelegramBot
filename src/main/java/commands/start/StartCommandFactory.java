@@ -40,10 +40,10 @@ public class StartCommandFactory {
             throw new RuntimeException("There are no start command implementation");
         }
 
-        for(Class<? extends StartCommand> startImpl : candidates){
-            if(startImpl.isAnnotationPresent(Active.class)){
+        for(Class<? extends StartCommand> startCommandImpl : candidates){
+            if(startCommandImpl.isAnnotationPresent(Active.class)){
                 try {
-                    return startImpl.getDeclaredConstructor().newInstance();
+                    return startCommandImpl.getDeclaredConstructor().newInstance();
                 } catch (InstantiationException e) {
                     throw new RuntimeException("InstantiationException in getStartCommand method");
                 } catch (IllegalAccessException exception) {
@@ -56,6 +56,6 @@ public class StartCommandFactory {
             }
         }
 
-        throw new RuntimeException("Cannot created new instance of start command");
+        throw new RuntimeException("Cannot create new start command instance");
     }
 }

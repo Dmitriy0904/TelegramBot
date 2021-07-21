@@ -35,7 +35,7 @@ public class HelpCommandFactory {
     public HelpCommand getHelpCommand(){
         Set<Class<? extends HelpCommand>> candidates = implementations
                 .stream()
-                .filter(startImpl -> startImpl.isAnnotationPresent(Active.class))
+                .filter(helpImpl -> helpImpl.isAnnotationPresent(Active.class))
                 .collect(Collectors.toSet());
 
         if(candidates.isEmpty()){
@@ -58,6 +58,6 @@ public class HelpCommandFactory {
             }
         }
 
-        throw new RuntimeException("Cannot created new instance of help command");
+        throw new RuntimeException("Cannot created new help command instance");
     }
 }
