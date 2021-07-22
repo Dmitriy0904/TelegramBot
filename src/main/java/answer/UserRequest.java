@@ -11,6 +11,10 @@ public class UserRequest {
         this.value = value;
     }
 
+    public UserRequest(CommandsType commandType){
+        this.commandType = commandType;
+    }
+
     public CommandsType getCommandType() {
         return commandType;
     }

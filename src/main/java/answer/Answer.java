@@ -1,6 +1,5 @@
 package answer;
 
-import commands.*;
 import commands.def.DefaultCommand;
 import commands.def.DefaultCommandFactory;
 import commands.find.FindCommand;
@@ -15,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.api.objects.Message;
 
-import java.util.Map;
-
 public class Answer {
     private final MessageParser messageParser;
     private static final Logger log = LoggerFactory.getLogger(Answer.class);
@@ -26,15 +23,15 @@ public class Answer {
     }
 
     public String formAnswer(Message message){
-        UserQuery userQuery = messageParser.parseMessage(message);
-        switch (userQuery.getCommandType()){
+        UserRequest userRequest = messageParser.parseMessage(message);
+        switch (userRequest.getCommandType()){
             case START -> {
                 StartCommand startCommand = StartCommandFactory.getInstance().getStartCommand();
                 return startCommand.formStartAnswer();
             }
             case FIND -> {
                 FindCommand findCommand = FindCommandFactory.getInstance().getFindCommand();
-                return findCommand.formFindAnswer(userQuery.getValue());
+                return findCommand.formFindAnswer(userRequest.getValue());
             }
             case HELP -> {
                 HelpCommand helpCommand = HelpCommandFactory.getInstance().getHelpCommand();
