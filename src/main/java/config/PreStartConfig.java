@@ -12,7 +12,7 @@ public class PreStartConfig {
         String botPropsPath = PathConfig.BOT_PROPERTIES_PATH.getPath();
         File botPropsFile = new File(botPropsPath);
         if(!botPropsFile.exists()){
-            log.error("BotProperties file {} does not exist", botPropsPath);
+            log.error("BotProps file {} does not exist", botPropsPath);
             throw new RuntimeException("BotProperty file does not exist");
         }
     }

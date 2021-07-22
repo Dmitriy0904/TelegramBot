@@ -22,7 +22,9 @@ public class AnswerBuilder {
 
                     String fieldName = field.getName();
                     result.append(StringUtils.capitalize(fieldName)).append(": ");
-                    result.append(field.get(model).toString());
+
+                    String fieldValue = (field.get(model).toString());
+                    result.append(StringUtils.capitalize(fieldValue));
 
                     if(field.isAnnotationPresent(SpecialEnd.class)){
                         SpecialEnd annotation = field.getAnnotation(SpecialEnd.class);

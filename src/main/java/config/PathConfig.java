@@ -1,7 +1,8 @@
 package config;
 
 public enum PathConfig {
-    BOT_PROPERTIES_PATH("src/main/resources/bot.properties");
+    BOT_PROPERTIES_PATH("src/main/resources/bot.properties"),
+    WEATHER_PROPERTIES_PATH("src/main/resources/weather.properties");
 
     private final String path;
 

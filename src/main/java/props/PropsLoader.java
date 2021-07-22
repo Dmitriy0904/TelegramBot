@@ -12,9 +12,9 @@ import java.util.Properties;
 
 public class PropsLoader {
     private static final Logger log = LoggerFactory.getLogger(PropsLoader.class);
-    public Properties loadProperties(){
+
+    public Properties loadProperties(String PATH){
         Properties props = new Properties();
-        String PATH = PathConfig.BOT_PROPERTIES_PATH.getPath();
 
         log.info("Try to load properties from: {}", PATH);
 
@@ -30,7 +30,7 @@ public class PropsLoader {
             throw new RuntimeException(exception);
         }
 
-        log.info("props.BotProperties from {} was read successfully", PATH);
+        log.info("props.BotProps from {} was read successfully", PATH);
         return props;
     }
 }
