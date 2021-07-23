@@ -1,6 +1,7 @@
 package commands.find;
 
 import commands.Active;
+import commands.IncorrectCommandReason;
 import commands.find.weather.builder.AnswerBuilder;
 import commands.find.weather.mapper.ModelMapper;
 import commands.find.weather.model.WeatherModel;
@@ -13,15 +14,21 @@ public class FindCommandImpl implements FindCommand {
 
 	@Override
     public String formFindAnswer(String city){
-        UrlForming urlForming = new UrlForming();
-        URL url = urlForming.formUrl(city);
+	    try{
 
-        ModelMapper modelMapper = ModelMapper.getInstance();
-        WeatherModel weatherModel = modelMapper.mapModel(WeatherModel.class, url);
+            UrlForming urlForming = new UrlForming();
+            URL url = urlForming.formUrl(city);
 
-        AnswerBuilder messageBuilder = new AnswerBuilder();
-        String answer = messageBuilder.buildAnswer(weatherModel);
+            ModelMapper modelMapper = ModelMapper.getInstance();
+            WeatherModel weatherModel = modelMapper.mapModel(WeatherModel.class, url);
 
-        return answer;
+            AnswerBuilder messageBuilder = new AnswerBuilder();
+            String answer = messageBuilder.buildAnswer(weatherModel);
+
+            return answer;
+
+        } catch (RuntimeException exception){
+	        return IncorrectCommandReason.INCORRECT_CITY.getReason();
+        }
     }
 }
