@@ -43,7 +43,7 @@ public class Answer {
             }
             default -> {
                 DefaultCommand defaultCommand = DefaultCommandFactory.getInstance().getDefaultCommand();
-                return defaultCommand.formDefaultAnswer();
+                return defaultCommand.formDefaultAnswer(userRequest.getValue());
             }
         }
     }
