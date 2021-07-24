@@ -1,6 +1,6 @@
 package commands.settings;
 
-import commands.Active;
+import annotation.Active;
 import commands.CommandsPackages;
 import org.reflections.Reflections;
 

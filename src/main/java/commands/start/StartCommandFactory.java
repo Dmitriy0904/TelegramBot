@@ -1,6 +1,6 @@
 package commands.start;
 
-import commands.Active;
+import annotation.Active;
 import commands.CommandsPackages;
 import org.reflections.Reflections;
 import java.lang.reflect.InvocationTargetException;

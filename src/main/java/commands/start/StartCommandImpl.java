@@ -1,6 +1,6 @@
 package commands.start;
 
-import commands.Active;
+import annotation.Active;
 
 @Active
 public class StartCommandImpl implements StartCommand {

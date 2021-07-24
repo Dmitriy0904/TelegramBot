@@ -1,9 +1,7 @@
 package commands.help;
 
-import commands.Active;
+import annotation.Active;
 import commands.CommandsPackages;
-import commands.start.StartCommand;
-import commands.start.StartCommandFactory;
 import org.reflections.Reflections;
 
 import java.lang.reflect.InvocationTargetException;

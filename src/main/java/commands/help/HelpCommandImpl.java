@@ -1,6 +1,6 @@
 package commands.help;
 
-import commands.Active;
+import annotation.Active;
 
 @Active
 public class HelpCommandImpl implements HelpCommand{

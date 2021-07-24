@@ -1,6 +1,6 @@
 package commands.settings;
 
-import commands.Active;
+import annotation.Active;
 
 @Active
 public class SettingsCommandImpl implements SettingsCommand{

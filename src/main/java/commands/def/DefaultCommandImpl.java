@@ -1,6 +1,6 @@
 package commands.def;
 
-import commands.Active;
+import annotation.Active;
 import commands.IncorrectCommandReason;
 import org.apache.commons.lang3.StringUtils;
 
