@@ -1,6 +1,6 @@
 package commands.find;
 
-import commands.Active;
+import annotation.Active;
 import commands.IncorrectCommandReason;
 import commands.find.weather.builder.AnswerBuilder;
 import commands.find.weather.mapper.ModelMapper;
