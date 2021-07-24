@@ -1,3 +1,4 @@
+import bot.Bot;
 import config.PreStartConfig;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.TelegramBotsApi;
