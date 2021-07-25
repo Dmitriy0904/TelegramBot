@@ -7,18 +7,18 @@ import org.telegram.telegrambots.api.objects.Message;
 
 
 public class MessageParser {
-    private final Integer MAX_MESSAGE_PARTS = 2;
+    private final Integer maxMessageParts = 2;
 
     public UserRequest parseMessage(Message message){
 
         if(message == null || !message.hasText()){
-            new UserRequest(CommandsType.DEFAULT, null);
+            new UserRequest(CommandsType.DEFAULT);
         }
 
         //switch??
         String text = message.getText();
         if(StringUtils.containsIgnoreCase(text, CommandsType.FIND.getCommand())){
-            String[] info = text.split(" ", MAX_MESSAGE_PARTS);
+            String[] info = text.split(" ", maxMessageParts);
             if(info.length == 1){           //Если пользователь ввёл только команду /find без указания города
                 return new UserRequest(CommandsType.DEFAULT, IncorrectCommandReason.FIND_WITHOUT_CITY.getReason());
             }

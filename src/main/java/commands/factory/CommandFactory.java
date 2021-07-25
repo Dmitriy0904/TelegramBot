@@ -1,6 +1,5 @@
 package commands.factory;
 
-import answer.UserRequest;
 import commands.def.DefaultCommand;
 import commands.find.FindCommand;
 import commands.help.HelpCommand;

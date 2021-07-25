@@ -11,12 +11,12 @@ public class FindCommandFactory {
     private static FindCommandFactory instance;
     private Reflections reflections;
     private Set<Class<? extends FindCommand>> implementations;
-    private String ROOT_PATH;
+    private String rootPackage;
 
 
     private FindCommandFactory() {
-        ROOT_PATH = CommandsPackages.FIND.getROOT_PACKAGE();
-        reflections = new Reflections(ROOT_PATH);
+        rootPackage = CommandsPackages.FIND.getROOT_PACKAGE();
+        reflections = new Reflections(rootPackage);
         implementations = reflections.getSubTypesOf(FindCommand.class);
     }
 

@@ -12,12 +12,12 @@ public class StartCommandFactory {
     private static StartCommandFactory instance;
     private final Reflections reflections;
     private final Set<Class<? extends StartCommand>> implementations;
-    private final String ROOT_PACKAGE;
+    private final String rootPackage;
 
 
     private StartCommandFactory(){
-        ROOT_PACKAGE = CommandsPackages.START.getROOT_PACKAGE();
-        reflections = new Reflections(ROOT_PACKAGE);
+        rootPackage = CommandsPackages.START.getROOT_PACKAGE();
+        reflections = new Reflections(rootPackage);
         implementations = reflections.getSubTypesOf(StartCommand.class);
     }
 

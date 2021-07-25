@@ -12,12 +12,12 @@ public class HelpCommandFactory {
     private static HelpCommandFactory instance;
     private final Reflections reflections;
     private final Set<Class<? extends HelpCommand>> implementations;
-    private final String ROOT_PACKAGE;
+    private final String rootPackage;
 
 
     private HelpCommandFactory(){
-        ROOT_PACKAGE = CommandsPackages.HELP.getROOT_PACKAGE();
-        reflections = new Reflections(ROOT_PACKAGE);
+        rootPackage = CommandsPackages.HELP.getROOT_PACKAGE();
+        reflections = new Reflections(rootPackage);
         implementations = reflections.getSubTypesOf(HelpCommand.class);
     }
 

@@ -12,12 +12,12 @@ public class DefaultCommandFactory {
     private static DefaultCommandFactory instance;
     private final Reflections reflections;
     private final Set<Class<? extends DefaultCommand>> implementations;
-    private final String ROOT_PACKAGE;
+    private final String rootPackage;
 
 
     private DefaultCommandFactory(){
-        ROOT_PACKAGE = CommandsPackages.DEFAULT.getROOT_PACKAGE();
-        reflections = new Reflections(ROOT_PACKAGE);
+        rootPackage = CommandsPackages.DEFAULT.getROOT_PACKAGE();
+        reflections = new Reflections(rootPackage);
         implementations = reflections.getSubTypesOf(DefaultCommand.class);
     }
 

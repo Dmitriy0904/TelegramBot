@@ -12,12 +12,12 @@ public class SettingsCommandFactory {
     private static SettingsCommandFactory instance;
     private Reflections reflections;
     private Set<Class<? extends SettingsCommand>> implementations;
-    private String ROOT_PACKAGE;
+    private String rootPackage;
 
 
     private SettingsCommandFactory() {
-        ROOT_PACKAGE = CommandsPackages.SETTINGS.getROOT_PACKAGE();
-        reflections = new Reflections(ROOT_PACKAGE);
+        rootPackage = CommandsPackages.SETTINGS.getROOT_PACKAGE();
+        reflections = new Reflections(rootPackage);
         implementations = reflections.getSubTypesOf(SettingsCommand.class);
     }
 
