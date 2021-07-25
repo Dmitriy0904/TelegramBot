@@ -31,7 +31,7 @@ public class Answer {
             }
             case FIND -> {
                 FindCommand findCommand = FindCommandFactory.getInstance().getFindCommand();
-                return findCommand.formFindAnswer(userRequest.getValue());
+                return findCommand.formFindAnswer(userRequest);
             }
             case HELP -> {
                 HelpCommand helpCommand = HelpCommandFactory.getInstance().getHelpCommand();
@@ -43,7 +43,7 @@ public class Answer {
             }
             default -> {
                 DefaultCommand defaultCommand = DefaultCommandFactory.getInstance().getDefaultCommand();
-                return defaultCommand.formDefaultAnswer(userRequest.getValue());
+                return defaultCommand.formDefaultAnswer(userRequest);
             }
         }
     }

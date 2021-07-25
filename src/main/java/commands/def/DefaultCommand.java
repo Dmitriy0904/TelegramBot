@@ -1,5 +1,7 @@
 package commands.def;
 
+import answer.UserRequest;
+
 public interface DefaultCommand {
-    String formDefaultAnswer(String reason);
+    String formDefaultAnswer(UserRequest request);
 }

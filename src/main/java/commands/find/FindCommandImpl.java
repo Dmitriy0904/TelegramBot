@@ -1,6 +1,7 @@
 package commands.find;
 
 import annotation.Active;
+import answer.UserRequest;
 import commands.IncorrectCommandReason;
 import commands.find.weather.builder.AnswerBuilder;
 import commands.find.weather.mapper.ModelMapper;
@@ -13,8 +14,9 @@ import java.net.URL;
 public class FindCommandImpl implements FindCommand {
 
 	@Override
-    public String formFindAnswer(String city){
+    public String formFindAnswer(UserRequest request){
 	    try{
+            String city = request.getValue();
 
             UrlForming urlForming = new UrlForming();
             URL url = urlForming.formUrl(city);

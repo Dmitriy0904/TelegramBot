@@ -1,5 +1,7 @@
 package commands.find;
 
+import answer.UserRequest;
+
 public interface FindCommand {
-    String formFindAnswer(String city);
+    String formFindAnswer(UserRequest request);
 }
