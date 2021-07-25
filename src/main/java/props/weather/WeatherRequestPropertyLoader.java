@@ -4,9 +4,9 @@ import annotation.Active;
 import commands.find.weather.model.WeatherRequest;
 import props.Destination;
 import props.PropertyLoader;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.*;
 
 @Active
@@ -17,26 +17,12 @@ public class WeatherRequestPropertyLoader implements PropertyLoader {
     public Properties loadProperties(String path) {
         Properties props = new Properties();
 
-        try(FileInputStream fileInputStream = new FileInputStream(path)){
-            props.load(fileInputStream);
+        try(InputStream inputStream = this.getClass().getResourceAsStream(path)) {
+            props.load(inputStream);
             return props;
-
-//            Map<Field, String> propertyValue = new HashMap<>();
-//            Field[] objectFields = WeatherRequest.class.getDeclaredFields();
-//
-//            for(Field field : objectFields){
-//                if(field.isAnnotationPresent(WeatherRequestProperty.class)){
-//                    WeatherRequestProperty botProperty = field.getAnnotation(WeatherRequestProperty.class);
-//                    String value = botProperty.value();
-//                    propertyValue.put(field, value);
-//                }
-//            }
-//
-//            return propertyValue;
-
-        } catch (FileNotFoundException exception) {
+        } catch (FileNotFoundException exception){
             throw new RuntimeException(exception);
-        } catch (IOException exception) {
+        } catch (IOException exception){
             throw new RuntimeException(exception);
         }
 
