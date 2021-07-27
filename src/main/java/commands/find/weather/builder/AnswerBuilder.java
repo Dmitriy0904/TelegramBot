@@ -1,6 +1,7 @@
 package commands.find.weather.builder;
 
 import commands.find.weather.annotations.Mapped;
+import commands.find.weather.annotations.Translate;
 import commands.find.weather.annotations.SpecialEnd;
 import org.apache.commons.lang3.StringUtils;
 
@@ -25,8 +26,15 @@ public class AnswerBuilder {
                 if(field.isAnnotationPresent(Mapped.class)){
                     field.setAccessible(true);
 
-                    String fieldName = field.getName();
-                    result.append(StringUtils.capitalize(fieldName)).append(": ");
+                    if(field.isAnnotationPresent(Translate.class)){
+                        Translate annotation = field.getAnnotation(Translate.class);
+                        String annotationValue = annotation.value();
+                        result.append(StringUtils.capitalize(annotationValue)).append(": ");
+                    }
+                    else {
+                        String fieldName = field.getName();
+                        result.append(StringUtils.capitalize(fieldName)).append(": ");
+                    }
 
                     String fieldValue = (field.get(model).toString());
                     result.append(StringUtils.capitalize(fieldValue));
